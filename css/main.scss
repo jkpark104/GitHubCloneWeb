@@ -1,0 +1,382 @@
+/* COMMON */
+.body__container {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* BTN */
+.btn {
+  height: 34px;
+  background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  display: inline-flex;
+  /* inline 속성 이므로 요소 간에 줄바꿈 공백 발생 */
+  align-items: center;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  color: #333;
+
+  &:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .07);
+  }
+
+  &--primary {
+    border: 1px solid #65b836;
+    color: #fff;
+    background: #55a532 linear-gradient(#91dd70, #55ae2e);
+  }
+}
+
+/* INPUT */
+.input--text {
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075);
+  font-size: 16px;
+
+  &:focus {
+    border-color: #51a7e8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075),
+      0 0 5px rgba(81, 167, 232, .5);
+    /* 안쪽 그림자를 유지하면서 바깥쪽도 새로 넣음 */
+  }
+
+  /* VENDOR Prefix (브라우저 업체별 접두사) */
+  &::-webkit-input-placeholder {
+    color: #cacaca;
+  }
+
+  &::-ms-input-placeholder {
+    color: #cacaca;
+  }
+
+  &::-moz-input-placeholder {
+    color: #cacaca;
+  }
+}
+
+/* FLOAT CLEARFIX */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.float--left {
+  float: left;
+}
+
+.float--right {
+  float: right;
+}
+
+/* SUMMARY  */
+.summary {
+  &__title {
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+
+  &__description {
+    font-size: 26px;
+    font-weight: 300;
+    color: #767676;
+    line-height: 1.5;
+  }
+}
+
+/* SECTION & INNER */
+.section {
+  position: relative;
+
+  .inner {
+    max-width: 980px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+  }
+}
+
+/* HEADER */
+header {
+  border-bottom: 1px solid rbga(0, 0, 0, .75);
+  box-shadow: 0 0 5px rgba(0, 0, .75);
+  background: #fff;
+
+  .inner {
+    /* display: flex;
+       justify-content: space-between;*/
+    /* float을 사용하지 않고도 양쪽으로 수평 정렬 할 수 있음 but float처럼 화면이 작을 때 아래로 흐리지 않음 < 반응형 웹? */
+    height: 78px;
+  }
+
+  .menu-group {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .logo {
+    margin-right: 10px;
+
+    a {
+      background-image: url(../img/logo.svg);
+      width: 32px;
+      height: 32px;
+      display: block;
+      text-indent: -9999px;
+
+      &:hover {
+        background-image: url(../img/logo_on.svg);
+      }
+    }
+  }
+
+  .main-menu {
+    display: flex;
+
+    li a {
+      display: block;
+      /* margin: 10px; */
+      /* 버튼의 경우 margin으로 주면 잘 안 눌림 따라서 padding+a를 사용 */
+      padding: 10px;
+      color: #3c4146;
+
+      &:hover {
+        color: #4078c0;
+      }
+    }
+  }
+
+  .sign-group {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  .btn-group {
+    order: 2;
+    display: flex;
+    /* 내부요소가 flex로 바뀜 */
+
+    .sign-in {
+      margin-right: 4px;
+    }
+  }
+
+  .sub-menu {
+    display: flex;
+    margin-right: 10px;
+
+    li a {
+      display: block;
+      padding: 8px;
+      font-size: 13px;
+      color: #3c4146;
+
+      &:hover {
+        color: #4078c0;
+      }
+    }
+  }
+}
+
+#search-form {
+  order: 1;
+  margin-right: 12px;
+}
+
+#search {
+  width: 160px;
+  font-size: 14px;
+
+  +[type='submit'] {
+    display: none;
+  }
+}
+
+/* VISUAL */
+.section--visual {
+  background-image: url(../img/bg.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+  /* 배경이 최대한 늘어남 */
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* RLUP 위치 0 + absolute 부모요소 크기만큼 커짐 */
+    /* width: 100%;
+     height: 100%; */
+    background: rgba(0, 0, 0, .3);
+  }
+
+  .inner {
+    padding: 160px 0;
+    display: flex;
+  }
+
+  .summary {
+    flex-grow: 1;
+    flex-basis: 0;
+    /* => flex : 1; */
+    /* 글씨 크기 때문에 제한된 박스에서 폼의 사이즈가 줄어듦
+    따라서 basis의 값을 0으로 설정해 폼의 여백에 대한 활용도를 넓힘 */
+    margin-right: 90px;
+  }
+
+  .summary__title {
+    color: #fff;
+    font-size: 54px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+      0 1px 25px rgba(0, 0, 0, .75);
+  }
+
+  .summary__description {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+      0 1px 25px rgba(0, 0, 0, .75);
+  }
+}
+
+#sign-form {
+  width: 340px;
+  margin-top: 16px;
+
+  li {
+    margin-bottom: 17px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .input--text {
+    width: 100%;
+    height: 40px;
+  }
+
+  .caption {
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, .6);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  [type="submit"] {
+    width: 100%;
+    height: 62px;
+    padding: 0 25px;
+    font-size: 20px;
+    /* (1) text-align: center;
+    안에 요소가 inline-flex이므로 텍스트 정렬 안 먹음*/
+    /* (2) text-align: center시 부모요소 가로 세로 지정 안돼 있으면 텍스트를 따라서 부모도 같이 가운데 정렬된 것 처럼 보임 */
+    justify-content: center;
+  }
+}
+
+/* FEATURE */
+.section--feature {
+  background: #f5f5f5;
+  padding-top: 66px;
+
+  .summary {
+    max-width: 820px;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .video {
+    max-width: 650px;
+    margin: 0 auto;
+
+    .video-ratio {
+      height: 0;
+      padding-top: 56.25%;
+      /* 부모요소의 너비의 16:9  */
+      position: relative;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* 동영상 부모요소의 전체크기 배치 */
+      }
+    }
+  }
+
+  .tiles {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+
+    .inner {
+      max-width: 1200px;
+    }
+
+    li {
+      padding: 34px 24px;
+      text-align: center;
+      line-height: 1.5;
+      border-right: 1px solid #e5e5e5;
+      box-sizing: border-box;
+      float: left;
+      width: 25%;
+      /* float -> border-box 확인 */
+      /* 구형 브라우저 */
+
+      &:last-child {
+        border-right: none;
+      }
+
+      img {
+        max-width: 100%;
+        /* width 100%로 할 시 이미지보다 작은 블록 요소일 때 줄어들지 않음  */
+        padding: 14px 10% 24px;
+        box-sizing: border-box;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 14px;
+        color: #767676;
+      }
+    }
+  }
+}
