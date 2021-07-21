@@ -47,6 +47,9 @@
   <!-- CSS & JS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
   <link rel="stylesheet" href="./css/main.scss" />
+  <link rel="stylesheet" media="(max-width: 1024px)" href="./css/main_medium.scss" />
+  <link rel="stylesheet" media="(max-width: 768px)" href="./css/main_small.scss" />
+  <script defer src="./main.js"></script>
 </head>
 
 <body>
@@ -60,14 +63,14 @@
             <!-- 이미지를 눌러 홈페이지로 이동함 -> BG 사용 -->
             <!-- a 태그 안의 글씨는 text-index 속성을 통해 대체 텍스트 처럼 사용 -->
           </div>
-          <ul class="main-menu">
+          <ul class="main-menu toggle">
             <li><a href="javascript:void(0)">Personal</a></li>
             <li><a href="javascript:void(0)">Open source</a></li>
             <li><a href="javascript:void(0)">Business</a></li>
             <li><a href="javascript:void(0)">Explore</a></li>
           </ul>
         </div>
-        <div class="sign-group float--right">
+        <div class="sign-group float--right toggle">
           <div class="btn-group">
             <a href="javascript:void(0)" class="btn sign-in">Sign in</a>
             <a href="javascript:void(0)" class="btn btn--primary sign-up">Sign up</a>
@@ -82,6 +85,8 @@
             <li><a href="javascript:void(0)">Support</a></li>
           </ul>
         </div>
+        <div id="toggle-btn">Header Menu Toggle Button</div>
+        <!-- 대체 텍스트 text-indent -->
       </div>
     </header>
 
